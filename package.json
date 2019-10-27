@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-starter",
+  "name": "rabitmq-exchange",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -23,6 +23,7 @@
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
     "@nestjs/platform-fastify": "^6.8.4",
+    "class-validator": "^0.10.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.0",
     "rxjs": "^6.5.3"

@@ -3,11 +3,11 @@ import {
   FastifyAdapter,
   NestFastifyApplication
 } from '@nestjs/platform-fastify';
-import { AppModule } from './app.module';
+import { WebhooksModule } from './webhooks/webhooks.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
+    WebhooksModule,
     new FastifyAdapter()
   );
   await app.listen(3000);
