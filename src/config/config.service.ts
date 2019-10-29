@@ -7,6 +7,8 @@ export interface ValidConfig {
   NODE_ENV: string;
   SERVICE_HOST: string;
   SERVICE_PORT: number;
+  RMQ_HOST: string;
+  RMQ_EXCHANGE: string;
   npm_package_name: string;
   npm_package_gitHead: string;
   npm_package_version: string;
@@ -18,6 +20,8 @@ export class ConfigService {
     NODE_ENV: Joi.string().default('local'),
     SERVICE_HOST: Joi.string().default('0.0.0.0'),
     SERVICE_PORT: Joi.number().default(3000),
+    RMQ_HOST: Joi.string().default('amqp://localhost:5672'),
+    RMQ_EXCHANGE: Joi.string().default('exchange1'),
     npm_package_name: Joi.string(),
     npm_package_gitHead: Joi.string(),
     npm_package_version: Joi.string()
@@ -26,6 +30,10 @@ export class ConfigService {
   constructor(path: string) {
     dotenv.config({ path });
     this.config = this.validate(process.env);
+  }
+
+  static setup(): ConfigService {
+    return new ConfigService(`${process.env.NODE_ENV || 'local'}.env`);
   }
 
   private validate(config: EnvConfig): ValidConfig {
@@ -60,5 +68,13 @@ export class ConfigService {
 
   get serviceVersion(): string {
     return this.config.npm_package_version;
+  }
+
+  get rmqUrl(): string {
+    return this.config.RMQ_HOST;
+  }
+
+  get rmqExchange(): string {
+    return this.config.RMQ_EXCHANGE;
   }
 }

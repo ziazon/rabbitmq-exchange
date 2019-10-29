@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@hapi/joi": "^16.1.7",
+    "@nestjs-plus/common": "^1.1.0",
+    "@nestjs-plus/rabbitmq": "^1.4.2",
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.7.2",
     "@nestjs/platform-fastify": "^6.8.4",

@@ -1,4 +1,4 @@
-import { Module, Global } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ConfigService } from './config.service';
 
 @Global()
@@ -6,7 +6,7 @@ import { ConfigService } from './config.service';
   providers: [
     {
       provide: ConfigService,
-      useValue: new ConfigService(`${process.env.NODE_ENV || 'local'}.env`)
+      useValue: ConfigService.setup()
     }
   ],
   exports: [ConfigService]
