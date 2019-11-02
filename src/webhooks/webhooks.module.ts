@@ -7,23 +7,19 @@ import { WebhooksService } from './webhooks.service';
 @Module({
   imports: [
     RabbitMQModule.forRootAsync({
-      useFactory: async () => {
-        const config = ConfigService.setup();
-        return {
-          uri: config.rmqUrl,
-          exchanges: [
-            {
-              name: config.rmqExchange,
-              type: 'topic'
-            }
-          ]
-        };
-      }
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.rmqUrl,
+        exchanges: [
+          {
+            name: configService.rmqExchange,
+            type: 'topic'
+          }
+        ]
+      }),
+      inject: [ConfigService]
     })
   ],
   controllers: [WebhooksController],
   providers: [WebhooksService]
 })
-export class WebhooksModule {
-	constructor(private readonly configService: ConfigService) {}
-}
+export class WebhooksModule {}

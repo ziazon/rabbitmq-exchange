@@ -1,5 +1,5 @@
-import * as dotenv from 'dotenv';
 import * as Joi from '@hapi/joi';
+import * as dotenv from 'dotenv';
 
 export type EnvConfig = Record<string, string>;
 
@@ -27,13 +27,9 @@ export class ConfigService {
     npm_package_version: Joi.string()
   }).options({ stripUnknown: true });
 
-  constructor(path: string) {
+  constructor(path: string = `${process.env.NODE_ENV || 'local'}.env`) {
     dotenv.config({ path });
     this.config = this.validate(process.env);
-  }
-
-  static setup(): ConfigService {
-    return new ConfigService(`${process.env.NODE_ENV || 'local'}.env`);
   }
 
   private validate(config: EnvConfig): ValidConfig {
