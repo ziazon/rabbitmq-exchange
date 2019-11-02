@@ -16,7 +16,8 @@ import { WebhooksService } from './webhooks.service';
           }
         ]
       }),
-      inject: [ConfigService]
+      inject: [ConfigService],
+      imports: []
     })
   ],
   controllers: [WebhooksController],
