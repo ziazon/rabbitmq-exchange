@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { WebhooksService } from './webhooks.service';
-import { NotifyWebhookPayload } from './webhooks.dto';
+import { NotifyWebhookPayload } from './dto/notify-payload.dto';
 
 @Controller()
 export class WebhooksController {

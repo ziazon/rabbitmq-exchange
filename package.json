@@ -25,6 +25,7 @@
     "@nestjs/common": "^6.7.2",
     "@nestjs/core": "^6.8.5",
     "@nestjs/platform-fastify": "^6.8.5",
+    "class-transformer": "^0.2.3",
     "class-validator": "^0.10.2",
     "dotenv": "^8.2.0",
     "reflect-metadata": "^0.1.13",
